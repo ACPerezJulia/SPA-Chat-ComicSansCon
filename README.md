@@ -12,7 +12,7 @@ Monkey D. Luffy es el protagonista del manga/anime **One Piece** creado por Eiic
 
 Comió la **Fruta Gomu Gomu** (una Fruta del Diablo), lo que convirtió su cuerpo en goma y le permite estirarse a voluntad. Su personalidad es simple, directa y extremadamente optimista: nunca se rinde, no entiende el sarcasmo y valora a sus amigos por encima de todo.
 
-Su tripulación, la **Banda del Sombrero de Paja**, incluye a Zoro, Nami, Usopp, Sanji, Chopper, Robin, Franky, Brook y Jinbe.
+Su tripulación, la **Banda del Sombrero de Paja**, incluye a Zoro, Nami, Usopp, Sanji, Chopper, Robin... y no te quiero spoilear más!
 
 ---
 
@@ -72,6 +72,7 @@ npm test
 ```
 
 Corre 12 tests unitarios con Vitest:
+
 - `tests/utils.test.js` — funciones de formateo y validación
 - `tests/app.test.js` — integración con fetch mockeado (éxito, error HTTP y caída de red)
 
@@ -111,14 +112,14 @@ Una vez desplegada, verificá que:
 
 ## Tecnologías
 
-| Tecnología | Uso |
-|---|---|
-| Vanilla JS (ES Modules) | Lógica del frontend |
-| History API | Routing SPA sin recarga |
-| CSS Mobile-first | Diseño responsive (320px → 768px → 1024px) |
-| Vercel Functions | Proxy seguro a la API de Gemini |
-| Google Gemini AI (`gemini-2.5-flash`) | Motor de respuestas del personaje |
-| Vitest + jsdom | Tests unitarios |
+| Tecnología                            | Uso                                        |
+| ------------------------------------- | ------------------------------------------ |
+| Vanilla JS (ES Modules)               | Lógica del frontend                        |
+| History API                           | Routing SPA sin recarga                    |
+| CSS Mobile-first                      | Diseño responsive (320px → 768px → 1024px) |
+| Vercel Functions                      | Proxy seguro a la API de Gemini            |
+| Google Gemini AI (`gemini-2.5-flash`) | Motor de respuestas del personaje          |
+| Vitest + jsdom                        | Tests unitarios                            |
 
 ---
 
@@ -151,4 +152,4 @@ Una vez desplegada, verificá que:
 
 ## Licencia
 
-MIT © 2026 Analía Pérez Juliá
+MIT © 2026 Halina87
