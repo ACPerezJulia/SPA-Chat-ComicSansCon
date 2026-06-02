@@ -1,6 +1,8 @@
-# LuffyChat — Proyecto Integrador M3
+# LuffyChat
 
-SPA de chat responsive que permite tener conversaciones naturales con **Monkey D. Luffy** de One Piece, integrando Google Gemini AI de forma segura mediante Vercel Functions.
+Prueba de concepto (POC) desarrollada para **ComicSansCon**, agencia digital especializada en experiencias interactivas para fans de videojuegos, películas y series.
+
+LuffyChat es una SPA de chat responsive que permite a los usuarios tener conversaciones naturales con **Monkey D. Luffy** de One Piece, usando Google Gemini AI como motor de respuestas. La API key nunca se expone al cliente gracias a una Vercel Serverless Function que actúa como proxy seguro.
 
 ---
 
@@ -141,6 +143,12 @@ Una vez desplegada, verificá que:
 
 ---
 
-## Autora
+## Desarrolladora
 
-**Analía Pérez Juliá** — Proyecto Integrador Módulo 3, Soy Henry
+**Analía Pérez Juliá**
+
+---
+
+## Licencia
+
+MIT © 2026 Analía Pérez Juliá
