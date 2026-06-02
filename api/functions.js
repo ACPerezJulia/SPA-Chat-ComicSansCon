@@ -76,8 +76,13 @@ export default async function handler(req, res) {
   } catch (error) {
     const isRateLimit = error.message?.toLowerCase().includes("high demand") ||
                         error.message?.toLowerCase().includes("quota");
+    const rateLimitMessages = [
+      "¡Más despacio, cerebrito! Luffy necesita un momento para procesar tanto. Esperá unos segundos.",
+      "¡Oi oi oi! ¡Hasta el Gear 5 necesita enfriarse! Dale unos segundos antes de seguir.",
+      "¡Estás hablando más rápido que Nami contando berries! Respirá y volvé a intentarlo.",
+    ];
     const message = isRateLimit
-      ? "¡Más despacio, cerebrito! Luffy necesita un momento para procesar tanto. Esperá unos segundos y volvé a intentarlo."
+      ? rateLimitMessages[Math.floor(Math.random() * rateLimitMessages.length)]
       : "Luffy está en el mar sin señal, intentá de nuevo.";
     return res.status(500).json({ error: message });
   }
