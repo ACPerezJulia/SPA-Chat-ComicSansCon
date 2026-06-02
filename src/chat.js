@@ -52,14 +52,16 @@ async function sendToGemini() {
 
     // Los errores HTTP (4xx, 5xx) NO lanzan excepción automáticamente.
     // Hay que verificar response.ok y lanzar el error manualmente.
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+      throw new Error(data.error || `HTTP error: ${response.status}`);
     }
 
-    const data = await response.json(); // segundo await: resuelve los datos reales
     addMessage('character', data.reply);
-  } catch {
-    addMessage('character', 'Luffy está en el mar sin señal, intentá de nuevo.');
+  } catch (err) {
+    const msg = err.message || 'Luffy está en el mar sin señal, intentá de nuevo.';
+    addMessage('character', msg);
   } finally {
     // finally garantiza que el loading se apague siempre, incluso si hubo error
     hideTyping();

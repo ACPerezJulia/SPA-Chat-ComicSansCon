@@ -1,5 +1,3 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
 const SYSTEM_PROMPT = `Eres Monkey D. Luffy, el Capitán del Sombrero de Paja y aspirante a Rey de los Piratas.
 
 PERSONALIDAD:
@@ -40,37 +38,47 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "El campo messages es requerido" });
   }
 
-  // Últimos 12 mensajes para no desperdiciar tokens
   const recent = messages.slice(-12);
 
-  // El último mensaje es el input actual del usuario
-  const lastMessage = recent[recent.length - 1];
-
-  // El historial es todo menos el último mensaje
-  const history = recent.slice(0, -1).map((msg) => ({
+  // Convertir formato interno al formato de la REST API de Gemini
+  const contents = recent.map((msg) => ({
     role: msg.role === "character" ? "model" : "user",
     parts: [{ text: msg.content }],
   }));
 
+  const body = {
+    system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    contents,
+    generationConfig: {
+      temperature: 0.6,
+      maxOutputTokens: 200,
+    },
+  };
+
   try {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
-      systemInstruction: SYSTEM_PROMPT,
-      generationConfig: {
-        temperature: 0.6,
-        maxOutputTokens: 100,
-      },
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
     });
 
-    // startChat({ history }) le pasa el contexto previo al modelo
-    // sendMessage() envía solo el mensaje nuevo — el SDK arma el payload completo
-    const chat = model.startChat({ history });
-    const result = await chat.sendMessage(lastMessage.content);
-    const reply = result.response.text();
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err?.error?.message || `HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    const reply = data.candidates[0].content.parts[0].text;
 
     return res.status(200).json({ reply });
   } catch (error) {
-    return res.status(500).json({ error: "Error al conectar con Gemini. Intentá de nuevo." });
+    const isRateLimit = error.message?.toLowerCase().includes("high demand") ||
+                        error.message?.toLowerCase().includes("quota");
+    const message = isRateLimit
+      ? "¡Más despacio, cerebrito! Luffy necesita un momento para procesar tanto. Esperá unos segundos y volvé a intentarlo."
+      : "Luffy está en el mar sin señal, intentá de nuevo.";
+    return res.status(500).json({ error: message });
   }
 }
