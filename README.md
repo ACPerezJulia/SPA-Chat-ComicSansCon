@@ -1,5 +1,7 @@
 # LuffyChat
 
+🔗 **[Ver app en producción](https://proyecto-integrador-m3-analia-perez.vercel.app/)**
+
 Prueba de concepto (POC) desarrollada para **ComicSansCon**, agencia digital especializada en experiencias interactivas para fans de videojuegos, películas y series.
 
 LuffyChat es una SPA de chat responsive que permite a los usuarios tener conversaciones naturales con **Monkey D. Luffy** de One Piece, usando Google Gemini AI como motor de respuestas. La API key nunca se expone al cliente gracias a una Vercel Serverless Function que actúa como proxy seguro.
