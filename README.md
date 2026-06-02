@@ -87,6 +87,7 @@ Corre 12 tests unitarios con Vitest:
 3. Importá el repositorio
 4. En **Environment Variables** agregá:
    - `GEMINI_API_KEY` → tu clave (marcala como **Sensitive**)
+   - Si no encontrás la sección, entrá directo a `https://vercel.com/dashboard/tu-proyecto/settings/environment-variables`
 5. Hacé click en **Deploy**
 
 > Después de guardar las variables de entorno, hacé un nuevo push o ejecutá `vercel --prod` para que el deployment las tome.
