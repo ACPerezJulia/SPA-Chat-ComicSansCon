@@ -15,7 +15,6 @@ function renderMessages() {
   const indicator = document.getElementById('typing-indicator');
 
   container.innerHTML = '';
-  if (indicator) container.appendChild(indicator);
 
   messages.forEach((msg) => {
     const el = document.createElement('div');
@@ -23,6 +22,8 @@ function renderMessages() {
     el.textContent = msg.content;
     container.appendChild(el);
   });
+
+  if (indicator) container.appendChild(indicator);
 
   const last = container.lastElementChild;
   if (last) last.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -34,7 +35,10 @@ function addMessage(role, content) {
 }
 
 function showTyping() {
-  document.getElementById('typing-indicator')?.classList.add('visible');
+  const indicator = document.getElementById('typing-indicator');
+  if (!indicator) return;
+  indicator.classList.add('visible');
+  indicator.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
 
 function hideTyping() {
