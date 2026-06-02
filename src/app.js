@@ -1,6 +1,6 @@
-import { initChat } from './chat.js';
+import { initChat } from "./chat.js";
 
-const container = () => document.getElementById('view-container');
+const container = () => document.getElementById("view-container");
 
 // ── Funciones de render ──────────────────────────────────────────────────────
 
@@ -18,7 +18,9 @@ function renderHome() {
       <button class="btn" id="btn-chat">Empezar a chatear</button>
     </div>
   `;
-  document.getElementById('btn-chat').addEventListener('click', () => navigateTo('/chat'));
+  document
+    .getElementById("btn-chat")
+    .addEventListener("click", () => navigateTo("/chat"));
 }
 
 function renderChat() {
@@ -26,6 +28,7 @@ function renderChat() {
     <div class="chat-layout">
       <section class="messages" id="messages-container">
         <div class="typing-indicator" id="typing-indicator">
+          <img src="assets/luffy-avatar.gif" alt="Luffy" class="luffy-avatar" />
           <span>Luffy está escribiendo</span>
           <div class="typing-dots">
             <i></i><i></i><i></i>
@@ -71,11 +74,11 @@ function renderAbout() {
           <li>Vitest</li>
         </ul>
       </div>
-      <div class="about__section">
-        <h3>Desarrolladora</h3>
-        <p>Analía Pérez Juliá</p>
       </div>
     </div>
+    <footer class="about-footer">
+      Desarrollado por <strong>Analía Pérez Juliá</strong> · © 2026
+    </footer>
   `;
 }
 
@@ -92,10 +95,10 @@ function renderNotFound() {
 // ── Tabla de rutas ───────────────────────────────────────────────────────────
 
 const routes = {
-  '/':      renderHome,
-  '/home':  renderHome,
-  '/chat':  renderChat,
-  '/about': renderAbout,
+  "/": renderHome,
+  "/home": renderHome,
+  "/chat": renderChat,
+  "/about": renderAbout,
 };
 
 // ── Router: lee la URL actual y ejecuta la función de render correspondiente ─
@@ -112,26 +115,26 @@ function router() {
 // ya cambió la URL) sin necesidad de volver a hacer pushState.
 
 export function navigateTo(path) {
-  history.pushState(null, '', path);
+  history.pushState(null, "", path);
   router();
 }
 
 // ── Intercepción de clicks con delegación de eventos ────────────────────────
 
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a');
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a");
   if (!link) return;
   if (e.ctrlKey || e.metaKey) return;
-  if (link.target === '_blank') return;
+  if (link.target === "_blank") return;
   if (!link.href.startsWith(location.origin)) return;
 
   e.preventDefault();
-  navigateTo(link.getAttribute('href'));
+  navigateTo(link.getAttribute("href"));
 });
 
 // ── Botones back/forward del navegador ──────────────────────────────────────
 
-window.addEventListener('popstate', router);
+window.addEventListener("popstate", router);
 
 // ── Carga inicial ────────────────────────────────────────────────────────────
 

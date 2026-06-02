@@ -5,24 +5,41 @@ export function resetMessages() {
 }
 
 function renderMessages() {
-  const container = document.getElementById('messages-container');
+  const container = document.getElementById("messages-container");
   if (!container) return;
 
-  const indicator = document.getElementById('typing-indicator');
+  const indicator = document.getElementById("typing-indicator");
 
-  container.innerHTML = '';
+  container.innerHTML = "";
 
   messages.forEach((msg) => {
-    const el = document.createElement('div');
-    el.className = `message message--${msg.role === 'user' ? 'user' : 'character'}`;
-    el.textContent = msg.content;
-    container.appendChild(el);
+    if (msg.role === "user") {
+      const el = document.createElement("div");
+      el.className = "message message--user";
+      el.textContent = msg.content;
+      container.appendChild(el);
+    } else {
+      const el = document.createElement("div");
+      el.className = "message message--character";
+      el.textContent = msg.content;
+
+      const hat = document.createElement("img");
+      hat.src = "assets/sombrero.png";
+      hat.alt = "";
+      hat.className = "bubble-hat";
+      hat.width = 44;
+      hat.height = 34;
+
+      el.appendChild(hat);
+      container.appendChild(el);
+    }
   });
 
   if (indicator) container.appendChild(indicator);
 
   const last = container.lastElementChild;
-  if (last?.scrollIntoView) last.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  if (last?.scrollIntoView)
+    last.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 function addMessage(role, content) {
@@ -31,14 +48,15 @@ function addMessage(role, content) {
 }
 
 function showTyping() {
-  const indicator = document.getElementById('typing-indicator');
+  const indicator = document.getElementById("typing-indicator");
   if (!indicator) return;
-  indicator.classList.add('visible');
-  if (indicator.scrollIntoView) indicator.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  indicator.classList.add("visible");
+  if (indicator.scrollIntoView)
+    indicator.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 function hideTyping() {
-  document.getElementById('typing-indicator')?.classList.remove('visible');
+  document.getElementById("typing-indicator")?.classList.remove("visible");
 }
 
 async function sendToGemini() {
@@ -48,9 +66,9 @@ async function sendToGemini() {
     // Enviamos los últimos 12 mensajes para no desperdiciar tokens
     const payload = messages.slice(-12);
 
-    const response = await fetch('/api/functions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("/api/functions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: payload }),
     });
 
@@ -62,10 +80,11 @@ async function sendToGemini() {
       throw new Error(data.error || `HTTP error: ${response.status}`);
     }
 
-    addMessage('character', data.reply);
+    addMessage("character", data.reply);
   } catch (err) {
-    const msg = err.message || 'Luffy está en el mar sin señal, intentá de nuevo.';
-    addMessage('character', msg);
+    const msg =
+      err.message || "Luffy está en el mar sin señal, intentá de nuevo.";
+    addMessage("character", msg);
   } finally {
     // finally garantiza que el loading se apague siempre, incluso si hubo error
     hideTyping();
@@ -73,19 +92,19 @@ async function sendToGemini() {
 }
 
 export function initChat() {
-  const form = document.getElementById('composer-form');
-  const input = document.getElementById('composer-input');
+  const form = document.getElementById("composer-form");
+  const input = document.getElementById("composer-input");
   if (!form || !input) return;
 
   renderMessages();
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     const text = input.value.trim();
     if (!text) return;
 
-    addMessage('user', text);
-    input.value = '';
+    addMessage("user", text);
+    input.value = "";
     sendToGemini();
   });
 }

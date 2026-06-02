@@ -14,7 +14,7 @@
   --color-text: #e6edf3;
   --color-text-muted: #8b949e;
   --color-accent: #f5a623;
-  --color-user-bubble: #f5a523cb;
+  --color-user-bubble: #c87000;
   --color-char-bubble: #21262d;
   --radius-bubble: 1rem;
   --font-base: system-ui, sans-serif;
@@ -52,11 +52,55 @@ body {
 }
 
 .header__brand {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-accent);
+  font-family: "Freckle Face", system-ui;
+  font-size: 1.3rem;
+  font-weight: 400;
   text-decoration: none;
-  letter-spacing: -0.01em;
+  letter-spacing: normal;
+  color: var(--color-accent);
+  animation: logo-shake 22s 1s ease-in-out infinite;
+}
+
+/* "Luffy" entra desde la izquierda al cargar + shimmer */
+.brand-luffy {
+  display: inline-block;
+  animation:
+    brand-from-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    logo-shimmer 8s 0.7s linear infinite;
+}
+
+/* "Chat" entra desde la derecha al cargar + shimmer */
+.brand-chat {
+  display: inline-block;
+  animation:
+    brand-from-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    logo-shimmer 8s 0.7s linear infinite;
+}
+
+@keyframes brand-from-left {
+  from { transform: translateX(-28px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes brand-from-right {
+  from { transform: translateX(28px);  opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes logo-shimmer {
+  0%, 100% { color: #f5a623; text-shadow: none; }
+  50%      { color: #ffe57a; text-shadow: 0 0 8px rgba(255, 220, 80, 0.6); }
+}
+
+/* Shake pirata: breve al principio del ciclo, quieto el resto */
+@keyframes logo-shake {
+  0%    { transform: rotate(0deg); }
+  1%    { transform: rotate(-6deg); }
+  2.5%  { transform: rotate(6deg); }
+  4%    { transform: rotate(-5deg); }
+  5%    { transform: rotate(4deg); }
+  6%    { transform: rotate(-2deg); }
+  7%, 100% { transform: rotate(0deg); }
 }
 
 /* ── Nav ── */
@@ -70,7 +114,7 @@ body {
   color: var(--color-text-muted);
   text-decoration: none;
   padding: 0.4rem 0.65rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   transition: color 0.15s;
 }
 
@@ -95,6 +139,7 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 2.5rem 1.25rem;
+  padding-bottom: 4rem;
 }
 
 /* ── Home ── */
@@ -105,6 +150,7 @@ body {
   letter-spacing: 0.1em;
   color: var(--color-accent);
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .home__title {
@@ -114,6 +160,7 @@ body {
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .home__description {
@@ -121,6 +168,7 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .btn {
@@ -139,6 +187,32 @@ body {
 
 .btn:hover {
   opacity: 0.85;
+}
+
+#btn-chat {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* ── About footer ── */
+.about-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 0.9rem 1.25rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  z-index: 10;
+}
+
+.about-footer strong {
+  color: var(--color-accent);
+  font-weight: 600;
 }
 
 /* ── About ── */
@@ -235,6 +309,7 @@ body {
 .message--user {
   background: var(--color-user-bubble);
   color: #fff;
+  font-weight: 600;
   align-self: flex-end;
   border-bottom-right-radius: 0.25rem;
 }
@@ -242,8 +317,50 @@ body {
 .message--character {
   background: var(--color-char-bubble);
   color: var(--color-text);
-  align-self: flex-start;
   border-bottom-left-radius: 0.25rem;
+  align-self: flex-start;
+  position: relative;
+  margin-top: 18px;
+}
+
+/* Sombrero en el extremo superior izquierdo de la burbuja */
+.bubble-hat {
+  position: absolute;
+  left: -10px;
+  top: -14px;
+  width: 44px;
+  height: 34px;
+  max-width: 44px;
+  max-height: 34px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Avatar circular de Luffy en el typing indicator */
+.luffy-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 1px solid var(--color-accent);
+}
+
+/* Sombrero pequeño solo para el typing indicator */
+.avatar {
+  width: 26px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* Wrapper que agrupa avatar + burbuja */
+.message-wrapper--character {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  align-self: flex-start;
+  margin-top: 14px;
 }
 
 /* ── Indicador "escribiendo..." ── */
@@ -317,7 +434,7 @@ body {
   padding: 0.6rem 0.9rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 0.4rem;
+  border-radius: 1.5rem;
   color: var(--color-text);
   font-size: 0.9rem;
   outline: none;
@@ -333,7 +450,7 @@ body {
   color: #0d1117;
   font-weight: 600;
   border: none;
-  border-radius: 0.4rem;
+  border-radius: 1.5rem;
   padding: 0.6rem 1.1rem;
   cursor: pointer;
   font-size: 0.9rem;
@@ -352,11 +469,11 @@ body {
   }
 
   .header__brand {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 
   .nav__link {
-    font-size: 0.95rem;
+    font-size: 1rem;
     padding: 0.4rem 0.75rem;
   }
 
@@ -399,6 +516,14 @@ body {
 @media (min-width: 1024px) {
   .header {
     padding: 0 3rem;
+  }
+
+  .header__brand {
+    font-size: 1.7rem;
+  }
+
+  .nav__link {
+    font-size: 1.05rem;
   }
 
   .view-content {
