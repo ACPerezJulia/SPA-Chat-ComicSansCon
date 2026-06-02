@@ -50,9 +50,12 @@ function renderAbout() {
       <h1 class="about__title">Acerca del Proyecto</h1>
       <div class="about__section">
         <h3>Descripción</h3>
-        <p>SPA de chat que permite tener conversaciones con Monkey D. Luffy
-        usando Google Gemini AI como motor de respuestas. Proyecto integrador
-        del Módulo 3 de Soy Henry.</p>
+        <p>Somos ComicSansCon, una agencia digital especializada en experiencias
+        interactivas para fans de videojuegos, películas y series. Esta app es
+        una prueba de concepto (POC) donde los usuarios pueden chatear con
+        personajes ficticios usando inteligencia artificial. Integramos Google
+        Gemini AI de forma segura para que las conversaciones sean naturales y
+        el personaje mantenga su personalidad en todo momento.</p>
       </div>
       <div class="about__section">
         <h3>Tecnologías</h3>
@@ -66,7 +69,7 @@ function renderAbout() {
         </ul>
       </div>
       <div class="about__section">
-        <h3>Autora</h3>
+        <h3>Desarrolladora</h3>
         <p>Analía Pérez Juliá</p>
       </div>
     </div>
