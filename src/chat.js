@@ -1,11 +1,3 @@
-const FAKE_RESPONSES = [
-  "¡Yo seré el Rey de los Piratas!",
-  "¡Eso suena increíble! ¡Vamos!",
-  "¡No me rindo nunca, jamás!",
-  "¿Querés ser mi nakama?",
-  "¡Tengo hambre! ¿Dónde está Sanji?",
-];
-
 let messages = [];
 
 function renderMessages() {
@@ -45,13 +37,33 @@ function hideTyping() {
   document.getElementById('typing-indicator')?.classList.remove('visible');
 }
 
-function simulateResponse() {
+async function sendToGemini() {
   showTyping();
-  setTimeout(() => {
+
+  try {
+    // Enviamos los últimos 12 mensajes para no desperdiciar tokens
+    const payload = messages.slice(-12);
+
+    const response = await fetch('/api/functions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: payload }),
+    });
+
+    // Los errores HTTP (4xx, 5xx) NO lanzan excepción automáticamente.
+    // Hay que verificar response.ok y lanzar el error manualmente.
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+
+    const data = await response.json(); // segundo await: resuelve los datos reales
+    addMessage('character', data.reply);
+  } catch {
+    addMessage('character', 'Luffy está en el mar sin señal, intentá de nuevo.');
+  } finally {
+    // finally garantiza que el loading se apague siempre, incluso si hubo error
     hideTyping();
-    const reply = FAKE_RESPONSES[Math.floor(Math.random() * FAKE_RESPONSES.length)];
-    addMessage('character', reply);
-  }, 1500);
+  }
 }
 
 export function initChat() {
@@ -68,6 +80,6 @@ export function initChat() {
 
     addMessage('user', text);
     input.value = '';
-    simulateResponse();
+    sendToGemini();
   });
 }
