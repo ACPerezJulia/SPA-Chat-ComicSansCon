@@ -1,5 +1,9 @@
 let messages = [];
 
+export function resetMessages() {
+  messages = [];
+}
+
 function renderMessages() {
   const container = document.getElementById('messages-container');
   if (!container) return;
@@ -18,7 +22,7 @@ function renderMessages() {
   if (indicator) container.appendChild(indicator);
 
   const last = container.lastElementChild;
-  if (last) last.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  if (last?.scrollIntoView) last.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
 
 function addMessage(role, content) {
@@ -30,7 +34,7 @@ function showTyping() {
   const indicator = document.getElementById('typing-indicator');
   if (!indicator) return;
   indicator.classList.add('visible');
-  indicator.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  if (indicator.scrollIntoView) indicator.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
 
 function hideTyping() {
