@@ -5,15 +5,15 @@ const container = () => document.getElementById('view-container');
 function renderHome() {
   container().innerHTML = `
     <div class="view-content">
+      <p class="home__eyebrow">Monkey D. Luffy · One Piece</p>
       <h1 class="home__title">¡Yo seré el Rey de los Piratas!</h1>
-      <h2 class="home__subtitle">Chateá con Monkey D. Luffy</h2>
       <p class="home__description">
         Luffy es el Capitán de la Banda del Sombrero de Paja y el pirata más
         libre de los mares. Comió la Fruta Gomu Gomu y su cuerpo es de goma.
         Su sueño es encontrar el One Piece y convertirse en el Rey de los Piratas.
         ¿Te animás a charlar con él?
       </p>
-      <button class="btn" id="btn-chat">¡Empezar a chatear!</button>
+      <button class="btn" id="btn-chat">Empezar a chatear</button>
     </div>
   `;
   document.getElementById('btn-chat').addEventListener('click', () => navigateTo('/chat'));
