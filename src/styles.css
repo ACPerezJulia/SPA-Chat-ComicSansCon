@@ -1,5 +1,7 @@
 /* ── Reset y variables ── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -12,7 +14,7 @@
   --color-text: #e6edf3;
   --color-text-muted: #8b949e;
   --color-accent: #f5a623;
-  --color-user-bubble: #1f6feb;
+  --color-user-bubble: #f5a523cb;
   --color-char-bubble: #21262d;
   --radius-bubble: 1rem;
   --font-base: system-ui, sans-serif;
@@ -278,12 +280,24 @@ body {
   font-style: normal;
 }
 
-.typing-dots i:nth-child(2) { animation-delay: 0.2s; }
-.typing-dots i:nth-child(3) { animation-delay: 0.4s; }
+.typing-dots i:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dots i:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 @keyframes bounce {
-  0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
-  40%            { transform: scale(1);   opacity: 1;   }
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* ── Composer ── */
