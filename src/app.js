@@ -1,3 +1,5 @@
+import { initChat } from './chat.js';
+
 const container = () => document.getElementById('view-container');
 
 // ── Funciones de render ──────────────────────────────────────────────────────
@@ -42,6 +44,7 @@ function renderChat() {
       </form>
     </div>
   `;
+  initChat();
 }
 
 function renderAbout() {
