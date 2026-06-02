@@ -74,14 +74,13 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center; /* evita que los hijos se estiren al ancho completo */
 }
 
 .view-content {
-  flex: 1;
-  padding: 2rem 1rem;
-  max-width: 640px;
   width: 100%;
-  margin: 0 auto;
+  max-width: 600px;
+  padding: 2rem 1.5rem;
 }
 
 /* ── Home ── */
@@ -104,7 +103,9 @@ body {
 }
 
 .btn {
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
   background: var(--color-accent);
   color: #0d1117;
   font-weight: 700;
@@ -180,6 +181,7 @@ body {
 /* ── Chat layout ── */
 .chat-layout {
   flex: 1;
+  width: 100%; /* override align-items: center del padre */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -318,11 +320,27 @@ body {
   }
 
   .view-content {
-    padding: 2.5rem 2rem;
+    padding: 3rem 2.5rem;
   }
 
   .home__title {
     font-size: 2rem;
+  }
+
+  .home__subtitle {
+    font-size: 1.3rem;
+  }
+
+  .home__description {
+    font-size: 1rem;
+  }
+
+  .about__title {
+    font-size: 1.7rem;
+  }
+
+  .about__section p {
+    font-size: 1rem;
   }
 
   .message {
@@ -353,23 +371,35 @@ body {
   }
 
   .view-content {
-    max-width: 720px;
-    padding: 3rem 2rem;
+    max-width: 600px;
+    padding: 4rem 3rem;
   }
 
   .home__title {
     font-size: 2.4rem;
   }
 
+  .home__subtitle {
+    font-size: 1.5rem;
+  }
+
+  .home__description {
+    font-size: 1.05rem;
+  }
+
+  .about__title {
+    font-size: 2rem;
+  }
+
   .messages {
-    max-width: 800px;
+    max-width: 760px;
     width: 100%;
     margin: 0 auto;
     padding: 1.5rem 2rem;
   }
 
   .composer {
-    max-width: 800px;
+    max-width: 760px;
     width: 100%;
     margin: 0 auto;
     padding: 1rem 2rem;
