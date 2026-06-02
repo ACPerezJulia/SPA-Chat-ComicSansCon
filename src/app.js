@@ -1,23 +1,85 @@
 const container = () => document.getElementById('view-container');
 
-// ── Funciones de render (placeholders) ──────────────────────────────────────
+// ── Funciones de render ──────────────────────────────────────────────────────
 
 function renderHome() {
-  container().innerHTML = '<h1>Bienvenido al chat con Luffy</h1>';
+  container().innerHTML = `
+    <div class="view-content">
+      <h1 class="home__title">¡Yo seré el Rey de los Piratas!</h1>
+      <h2 class="home__subtitle">Chateá con Monkey D. Luffy</h2>
+      <p class="home__description">
+        Luffy es el Capitán de la Banda del Sombrero de Paja y el pirata más
+        libre de los mares. Comió la Fruta Gomu Gomu y su cuerpo es de goma.
+        Su sueño es encontrar el One Piece y convertirse en el Rey de los Piratas.
+        ¿Te animás a charlar con él?
+      </p>
+      <button class="btn" id="btn-chat">¡Empezar a chatear!</button>
+    </div>
+  `;
+  document.getElementById('btn-chat').addEventListener('click', () => navigateTo('/chat'));
 }
 
 function renderChat() {
-  container().innerHTML = '<h1>Vista del Chat (próximamente)</h1>';
+  container().innerHTML = `
+    <div class="chat-layout">
+      <section class="messages" id="messages-container">
+        <div class="typing-indicator" id="typing-indicator">
+          <span>Luffy está escribiendo</span>
+          <div class="typing-dots">
+            <i></i><i></i><i></i>
+          </div>
+        </div>
+      </section>
+      <form class="composer" id="composer-form">
+        <input
+          class="composer__input"
+          id="composer-input"
+          type="text"
+          placeholder="Escribí tu mensaje..."
+          autocomplete="off"
+        />
+        <button class="composer__send" type="submit">Enviar</button>
+      </form>
+    </div>
+  `;
 }
 
 function renderAbout() {
-  container().innerHTML = '<h1>Acerca del proyecto</h1>';
+  container().innerHTML = `
+    <div class="view-content">
+      <h1 class="about__title">Acerca del Proyecto</h1>
+      <div class="about__section">
+        <h3>Descripción</h3>
+        <p>SPA de chat que permite tener conversaciones con Monkey D. Luffy
+        usando Google Gemini AI como motor de respuestas. Proyecto integrador
+        del Módulo 3 de Soy Henry.</p>
+      </div>
+      <div class="about__section">
+        <h3>Tecnologías</h3>
+        <ul class="tech-list">
+          <li>Vanilla JS</li>
+          <li>History API</li>
+          <li>Vercel Functions</li>
+          <li>Google Gemini AI</li>
+          <li>CSS Mobile-first</li>
+          <li>Vitest</li>
+        </ul>
+      </div>
+      <div class="about__section">
+        <h3>Autora</h3>
+        <p>Analía Pérez Juliá</p>
+      </div>
+    </div>
+  `;
 }
 
 function renderNotFound() {
   container().innerHTML = `
-    <h1>404 — Página no encontrada</h1>
-    <a href="/home">Volver al inicio</a>
+    <div class="view-content not-found">
+      <h1>404</h1>
+      <p>Esta página no existe.</p>
+      <a href="/home" class="btn">Volver al inicio</a>
+    </div>
   `;
 }
 
