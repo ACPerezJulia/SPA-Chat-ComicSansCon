@@ -39,7 +39,7 @@ function renderChat() {
         <input
           class="composer__input"
           id="composer-input"
-          type="text"
+          type="search"
           placeholder="Escribí tu mensaje..."
           autocomplete="off"
           autocorrect="off"
