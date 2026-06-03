@@ -42,6 +42,9 @@ function renderChat() {
           type="text"
           placeholder="Escribí tu mensaje..."
           autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
         />
         <button class="composer__send" type="submit">Enviar</button>
       </form>
