@@ -259,3 +259,9 @@
 .composer__send:active {
   transform: scale(0.92);
 }
+
+.composer__send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}

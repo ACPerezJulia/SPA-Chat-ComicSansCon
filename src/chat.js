@@ -116,6 +116,13 @@ function hideTyping() {
 }
 
 async function sendToGemini() {
+  const form = document.getElementById("composer-form");
+  const input = document.getElementById("composer-input");
+  const btn = form?.querySelector(".composer__send");
+
+  if (input) input.disabled = true;
+  if (btn) btn.disabled = true;
+
   showTyping();
 
   try {
@@ -142,7 +149,9 @@ async function sendToGemini() {
       err.message || "Luffy está en el mar sin señal, intentá de nuevo.";
     addMessage("character", msg);
   } finally {
-    // finally garantiza que el loading se apague siempre, incluso si hubo error
+    if (input) input.disabled = false;
+    if (btn) btn.disabled = false;
+    input?.focus();
     hideTyping();
   }
 }
