@@ -43,6 +43,38 @@
   margin-top: 18px;
 }
 
+/* ── Empty state ── */
+.chat-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+  padding: 2rem;
+  opacity: 0.6;
+}
+
+.chat-empty__hat {
+  width: 56px;
+  height: auto;
+  margin-bottom: 0.4rem;
+}
+
+.chat-empty__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.chat-empty__hint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  max-width: 22ch;
+  line-height: 1.5;
+}
+
 /* ── Footer del mensaje (hora + copiar) ── */
 .message__footer {
   display: flex;

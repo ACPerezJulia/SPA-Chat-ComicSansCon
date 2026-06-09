@@ -42,6 +42,18 @@ function renderMessages() {
 
   container.innerHTML = "";
 
+  if (messages.length === 0) {
+    container.innerHTML = `
+      <div class="chat-empty">
+        <img src="assets/sombrero.png" alt="Sombrero de Luffy" class="chat-empty__hat" />
+        <p class="chat-empty__title">¡Oi, oi, oi!</p>
+        <p class="chat-empty__hint">Escribí tu primer mensaje y comenzá tu aventura con Luffy.</p>
+      </div>
+    `;
+    if (indicator) container.appendChild(indicator);
+    return;
+  }
+
   messages.forEach((msg) => {
     const footer = document.createElement("div");
     footer.className = "message__footer";
