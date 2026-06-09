@@ -4,6 +4,36 @@ export function resetMessages() {
   messages = [];
 }
 
+const ICON_COPY = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>`;
+const ICON_CHECK = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+function formatTime(ts) {
+  return new Date(ts).toLocaleTimeString("es-AR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+function createCopyButton(content) {
+  const btn = document.createElement("button");
+  btn.className = "message__copy";
+  btn.title = "Copiar mensaje";
+  btn.innerHTML = ICON_COPY;
+
+  btn.addEventListener("click", () => {
+    navigator.clipboard.writeText(content).then(() => {
+      btn.innerHTML = ICON_CHECK;
+      btn.classList.add("message__copy--done");
+      setTimeout(() => {
+        btn.innerHTML = ICON_COPY;
+        btn.classList.remove("message__copy--done");
+      }, 1500);
+    });
+  });
+
+  return btn;
+}
+
 function renderMessages() {
   const container = document.getElementById("messages-container");
   if (!container) return;
@@ -13,10 +43,21 @@ function renderMessages() {
   container.innerHTML = "";
 
   messages.forEach((msg) => {
+    const footer = document.createElement("div");
+    footer.className = "message__footer";
+
+    const time = document.createElement("span");
+    time.className = "message__time";
+    time.textContent = formatTime(msg.timestamp);
+
+    footer.appendChild(time);
+    footer.appendChild(createCopyButton(msg.content));
+
     if (msg.role === "user") {
       const el = document.createElement("div");
       el.className = "message message--user";
       el.textContent = msg.content;
+      el.appendChild(footer);
       container.appendChild(el);
     } else {
       const el = document.createElement("div");
@@ -31,6 +72,7 @@ function renderMessages() {
       hat.height = 34;
 
       el.appendChild(hat);
+      el.appendChild(footer);
       container.appendChild(el);
     }
   });
