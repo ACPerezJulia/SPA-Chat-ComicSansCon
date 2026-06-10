@@ -1,3 +1,5 @@
+import { formatMessage, isValidMessage } from "./utils.js";
+
 let messages = [];
 
 export function resetMessages() {
@@ -99,7 +101,7 @@ function renderMessages() {
 }
 
 function addMessage(role, content) {
-  messages.push({ role, content, timestamp: Date.now() });
+  messages.push(formatMessage(role, content));
   renderMessages();
 }
 
@@ -115,11 +117,7 @@ function hideTyping() {
   document.getElementById("typing-indicator")?.classList.remove("visible");
 }
 
-async function sendToGemini() {
-  const form = document.getElementById("composer-form");
-  const input = document.getElementById("composer-input");
-  const btn = form?.querySelector(".composer__send");
-
+async function sendToGemini(input, btn) {
   if (input) input.disabled = true;
   if (btn) btn.disabled = true;
 
@@ -161,15 +159,17 @@ export function initChat() {
   const input = document.getElementById("composer-input");
   if (!form || !input) return;
 
+  const btn = form.querySelector(".composer__send");
+
   renderMessages();
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const text = input.value.trim();
-    if (!text) return;
+    if (!isValidMessage(text)) return;
 
     addMessage("user", text);
     input.value = "";
-    sendToGemini();
+    sendToGemini(input, btn);
   });
 }
