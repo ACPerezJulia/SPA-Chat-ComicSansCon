@@ -1,4 +1,4 @@
-import { initChat } from "./chat.js";
+import { initChat, clearChat } from "./chat.js";
 
 const container = () => document.getElementById("view-container");
 
@@ -27,6 +27,14 @@ function renderHome() {
 function renderChat() {
   container().innerHTML = `
     <div class="chat-layout">
+      <div class="chat-toolbar">
+        <button class="chat-clear" id="btn-clear-chat" title="Limpiar conversación">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/>
+          </svg>
+          Limpiar
+        </button>
+      </div>
       <section class="messages" id="messages-container">
         <div class="typing-indicator" id="typing-indicator">
           <img src="assets/luffy-avatar.gif" alt="Luffy" class="luffy-avatar" />
@@ -57,6 +65,10 @@ function renderChat() {
     </div>
   `;
   initChat();
+
+  document.getElementById("btn-clear-chat").addEventListener("click", () => {
+    if (confirm("¿Borrar la conversación?")) clearChat();
+  });
 }
 
 function renderAbout() {
