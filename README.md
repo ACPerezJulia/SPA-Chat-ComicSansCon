@@ -1,6 +1,6 @@
 # 🏴‍☠️ LuffyChat
 
-🔗 **[Ver app en producción](https://proyecto-integrador-m3-analia-perez.vercel.app/)**
+🔗 **[Ver app en producción](https://luffy-chat.vercel.app/)**
 
 Prueba de concepto (POC) desarrollada para **ComicSansCon**, agencia digital especializada en experiencias interactivas para fans de videojuegos, películas y series.
 
