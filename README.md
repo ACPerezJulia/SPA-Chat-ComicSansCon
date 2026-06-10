@@ -20,7 +20,9 @@ Su tripulación, la **Banda del Sombrero de Paja**, incluye a Zoro, Nami, Usopp,
 
 ## 📸 Capturas de pantalla en diferentes dispositivos
 
+<div align="center">
 <img src="src/assets/Notebook.png" alt="Vista desktop — Home" height="420" /> <img src="src/assets/Celular-tablet.png" alt="Vistas mobile — Chat y About" height="420" />
+</div>
 
 ---
 
