@@ -10,8 +10,6 @@ Prueba de concepto (POC) desarrollada para **ComicSansCon**, agencia digital esp
 
 ## 🧩 El personaje: Monkey D. Luffy
 
-<img src="src/assets/luffy-avatar.png" alt="Monkey D. Luffy" width="80" align="left" style="margin-right: 12px;" />
-
 Monkey D. Luffy es el protagonista del manga/anime **One Piece** creado por Eiichiro Oda. Es el Capitán de la Banda del Sombrero de Paja y su sueño es convertirse en el **Rey de los Piratas** encontrando el legendario tesoro One Piece.
 
 Comió la **Fruta Gomu Gomu** (una Fruta del Diablo), lo que convirtió su cuerpo en goma y le permite estirarse a voluntad. Su personalidad es simple, directa y extremadamente optimista: nunca se rinde, no entiende el sarcasmo y valora a sus amigos por encima de todo.
