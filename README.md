@@ -20,11 +20,9 @@ Su tripulación, la **Banda del Sombrero de Paja**, incluye a Zoro, Nami, Usopp,
 
 ---
 
-## 📸 Capturas de pantalla (mobile-first)
+## 📸 Capturas de pantalla en diferentes dispositivos
 
-| Vista Home                               | Vista Chat                               | Vista About                                |
-| ---------------------------------------- | ---------------------------------------- | ------------------------------------------ |
-| ![Vista Home](src/assets/vista-home.png) | ![Vista Chat](src/assets/vista-chat.png) | ![Vista About](src/assets/vista-about.png) |
+<img src="src/assets/Notebook.png" alt="Vista desktop — Home" height="420" /> <img src="src/assets/Celular-tablet.png" alt="Vistas mobile — Chat y About" height="420" />
 
 ---
 
@@ -32,30 +30,30 @@ Su tripulación, la **Banda del Sombrero de Paja**, incluye a Zoro, Nami, Usopp,
 
 ### Principales
 
-| Funcionalidad          | Descripción                                                                                                                                       |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🔀 SPA con History API    | Navegación interna sin recarga de página                                                                                                          |
-| 🗺️ Rutas internas         | `/home`, `/chat`, `/about` y página 404 personalizada                                                                                             |
-| 💬 Funcionalidad del Chat | Diferenciación visual usuario/personaje, scroll automático al último mensaje, historial durante la sesión e indicador "Luffy está escribiendo..." |
-| 🤖 Gemini AI              | Respuestas generadas por Google Gemini AI                                                                                                         |
-| 🔐 Proxy seguro           | Serverless Function en Vercel — la API key nunca llega al cliente                                                                                 |
-| 📱 Responsive             | Diseño mobile-first (320px → 768px → 1024px)                                                                                                      |
-| 🎨 Identidad visual       | Tema oscuro coherente con la estética del personaje                                                                                               |
-| ✅ Validación de datos  | Doble validación antes de llegar a Gemini: el frontend descarta mensajes vacíos o solo espacios, y la Serverless Function verifica que el array de mensajes exista y no esté vacío (HTTP 400 si falla) |
-| 🧪 Tests unitarios     | 12 tests con Vitest cubriendo funciones puras e integración con fetch mockeado                                                                    |
+| Funcionalidad             | Descripción                                                                                                                                                                                            |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 🔀 SPA con History API    | Navegación interna sin recarga de página                                                                                                                                                               |
+| 🗺️ Rutas internas         | `/home`, `/chat`, `/about` y página 404 personalizada                                                                                                                                                  |
+| 💬 Funcionalidad del Chat | Diferenciación visual usuario/personaje, scroll automático al último mensaje, historial durante la sesión e indicador "Luffy está escribiendo..."                                                      |
+| 🤖 Gemini AI              | Respuestas generadas por Google Gemini AI                                                                                                                                                              |
+| 🔐 Proxy seguro           | Serverless Function en Vercel — la API key nunca llega al cliente                                                                                                                                      |
+| 📱 Responsive             | Diseño mobile-first (320px → 768px → 1024px)                                                                                                                                                           |
+| 🎨 Identidad visual       | Tema oscuro coherente con la estética del personaje                                                                                                                                                    |
+| ✅ Validación de datos    | Doble validación antes de llegar a Gemini: el frontend descarta mensajes vacíos o solo espacios, y la Serverless Function verifica que el array de mensajes exista y no esté vacío (HTTP 400 si falla) |
+| 🧪 Tests unitarios        | 12 tests con Vitest cubriendo funciones puras e integración con fetch mockeado                                                                                                                         |
 
 ### Extras
 
-| Extra                   | Descripción                                                                             |
-| ----------------------- | --------------------------------------------------------------------------------------- |
-| 🖼️ Empty state          | Pantalla de bienvenida que guía al usuario a iniciar la conversación                    |
-| 🕐 Timestamps           | Cada burbuja muestra fecha y hora con `toLocaleString`                                  |
-| 📋 Botón de copiar      | Copia cualquier mensaje con feedback visual (ícono de check por 1.5s)                   |
-| ✖️ Limpiar mensaje      | El input es de tipo `search`, lo que hace que el browser muestre una X nativa para borrar el texto antes de enviarlo |
+| Extra                      | Descripción                                                                                                                                   |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🖼️ Empty state             | Pantalla de bienvenida que guía al usuario a iniciar la conversación                                                                          |
+| 🕐 Timestamps              | Cada burbuja muestra fecha y hora con `toLocaleString`                                                                                        |
+| 📋 Botón de copiar         | Copia cualquier mensaje con feedback visual (ícono de check por 1.5s)                                                                         |
+| ✖️ Limpiar mensaje         | El input es de tipo `search`, lo que hace que el browser muestre una X nativa para borrar el texto antes de enviarlo                          |
 | 📵 Sin sugerencias móviles | `type="search"` evita que el teclado en mobile sugiera datos del portapapeles, tarjetas de crédito u otras entradas inapropiadas para un chat |
-| 🔒 Bloqueo del composer | Input y botón deshabilitados mientras Gemini procesa — se reactivan en `finally`        |
-| ↗️ Ícono de envío       | Botón circular con SVG accesible via `aria-label`                                       |
-| 🎨 CSS modular          | Estilos separados por responsabilidad (`variables.css`, `layout.css`, `chat.css`, etc.) |
+| 🔒 Bloqueo del composer    | Input y botón deshabilitados mientras Gemini procesa — se reactivan en `finally`                                                              |
+| ↗️ Ícono de envío          | Botón circular con SVG accesible via `aria-label`                                                                                             |
+| 🎨 CSS modular             | Estilos separados por responsabilidad (`variables.css`, `layout.css`, `chat.css`, etc.)                                                       |
 
 ---
 
@@ -202,24 +200,24 @@ vercel --prod
 
 Este proyecto fue desarrollado con asistencia de herramientas de **Claude (Anthropic)** en distintas etapas del proceso.
 
-| Herramienta | Cómo la usé | Para qué |
-| --- | --- | --- |
-| Claude (claude.ai) | Chat en el navegador | Planificación previa: análisis de documentos, construcción y validación del CLAUDE.md, cotejo contra el material del módulo |
-| Claude Code (bash/CLI) | Terminal integrado en el flujo de desarrollo | Implementación paso a paso: generación de código, corrección de bugs, guía del deploy |
-| Claude (VS Code extension) | Editor integrado | Ajustes de diseño CSS, refinamiento visual, mejoras de UX |
+| Herramienta                | Cómo la usé                                  | Para qué                                                                                                                    |
+| -------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Claude (claude.ai)         | Chat en el navegador                         | Planificación previa: análisis de documentos, construcción y validación del CLAUDE.md, cotejo contra el material del módulo |
+| Claude Code (bash/CLI)     | Terminal integrado en el flujo de desarrollo | Implementación paso a paso: generación de código, corrección de bugs, guía del deploy                                       |
+| Claude (VS Code extension) | Editor integrado                             | Ajustes de diseño CSS, refinamiento visual, mejoras de UX                                                                   |
 
 ### Qué se generó con IA
 
-| Componente | Herramienta | Descripción |
-| --- | --- | --- |
-| CSS mobile-first | Claude Code | Layout con `100dvh`, breakpoints, burbujas de mensajes e indicador de escritura |
-| Routing SPA | Claude Code | History API, delegación de eventos, separación de `router()` y `navigateTo()` |
-| `chat.js` | Claude Code | Estado del historial, bloqueo del composer, manejo de errores con `try/catch/finally` |
-| `api/functions.js` | Claude Code | Proxy a Gemini via REST API, validaciones, conversión de formato de mensajes |
-| System prompt de Luffy | Claude Code | Definición de personalidad, reglas de respuesta y limitaciones del personaje |
-| Tests con Vitest | Claude Code | Mocks de fetch, tests de funciones puras y los tres casos de integración |
-| Manejo de errores personalizado | Claude Code | Mensajes custom para rate limit al estilo del personaje |
-| UX del chat | Claude Code | Empty state, timestamps, botón de copiar, ícono de envío y bloqueo del composer |
+| Componente                      | Herramienta | Descripción                                                                           |
+| ------------------------------- | ----------- | ------------------------------------------------------------------------------------- |
+| CSS mobile-first                | Claude Code | Layout con `100dvh`, breakpoints, burbujas de mensajes e indicador de escritura       |
+| Routing SPA                     | Claude Code | History API, delegación de eventos, separación de `router()` y `navigateTo()`         |
+| `chat.js`                       | Claude Code | Estado del historial, bloqueo del composer, manejo de errores con `try/catch/finally` |
+| `api/functions.js`              | Claude Code | Proxy a Gemini via REST API, validaciones, conversión de formato de mensajes          |
+| System prompt de Luffy          | Claude Code | Definición de personalidad, reglas de respuesta y limitaciones del personaje          |
+| Tests con Vitest                | Claude Code | Mocks de fetch, tests de funciones puras y los tres casos de integración              |
+| Manejo de errores personalizado | Claude Code | Mensajes custom para rate limit al estilo del personaje                               |
+| UX del chat                     | Claude Code | Empty state, timestamps, botón de copiar, ícono de envío y bloqueo del composer       |
 
 ### Prompts clave utilizados
 
@@ -233,6 +231,7 @@ El desarrollo fue iterativo — los prompts no fueron únicos sino conversacione
 
 ### Revisión y decisiones propias
 
+- **Tipografía display para el logo**: se eligió _Freckle Face_ (Google Fonts) para el "LuffyChat" del header por su trazo irregular y desenfadado, coherente con la personalidad del personaje. Se complementó con animaciones CSS de entrada, shimmer y shake periódico para darle vida al logo.
 - **Elección del personaje (Monkey D. Luffy)** y diseño inicial del system prompt con sus rasgos de personalidad, limitando las respuestas a 3 oraciones para mantener el estilo directo del personaje.
 - **`gemini-3.1-flash-lite`** como modelo de IA por ser gratuito, rápido y suficiente para un chatbot de personaje.
 - **Deploy serverless en Vercel** en lugar de un backend tradicional, aprovechando la integración nativa con funciones en `api/`.
@@ -242,6 +241,15 @@ El desarrollo fue iterativo — los prompts no fueron únicos sino conversacione
 - **`type="search"` en el input**: resolvió dos problemas a la vez — muestra una X nativa para limpiar el campo y evita que el teclado mobile sugiera datos del portapapeles o tarjetas de crédito.
 - **`vercel.json` con rewrite para la History API**: sin esta configuración, entrar directo a `/chat` o `/about` en producción devolvía 404. El rewrite redirige todas las rutas al `index.html` para que el router las maneje.
 - **Refinamiento del system prompt de Luffy**: después de probar las respuestas iniciales, se ajustó la personalidad del personaje — tono, limitaciones y ejemplos — para que las respuestas fueran más fieles al personaje real.
+
+---
+
+## 🛠️ Otras herramientas
+
+| Herramienta | Uso                                                                  |
+| ----------- | -------------------------------------------------------------------- |
+| Canva       | Edición de capturas de pantalla en dispositivos para el README       |
+| Google Vids | Creación del GIF animado de Luffy usado en el indicador de escritura |
 
 ---
 
