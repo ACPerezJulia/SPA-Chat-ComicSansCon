@@ -75,14 +75,20 @@ function renderAbout() {
       <div class="about__section">
         <h3>Tecnologías</h3>
         <ul class="tech-list">
-          <li>Vanilla JS</li>
+          <li>Vanilla JS (ES Modules)</li>
           <li>History API</li>
+          <li>CSS Mobile-first</li>
+          <li>Clipboard API</li>
           <li>Vercel Functions</li>
           <li>Google Gemini AI</li>
-          <li>CSS Mobile-first</li>
           <li>Vitest</li>
         </ul>
       </div>
+      <div class="about__section">
+        <h3>Contexto académico</h3>
+        <p>Proyecto Integrador del Módulo 3 — <strong>Soy Henry</strong>.
+        El código fuente está disponible en
+        <a href="https://github.com/ACPerezJulia/SPA-Chat-ComicSansCon" target="_blank" rel="noopener">GitHub</a>.</p>
       </div>
     </div>
     <footer class="about-footer">
