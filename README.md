@@ -52,6 +52,7 @@ Su tripulación, la **Banda del Sombrero de Paja**, incluye a Zoro, Nami, Usopp,
 | ✖️ Limpiar mensaje         | El input es de tipo `search`, lo que hace que el browser muestre una X nativa para borrar el texto antes de enviarlo                          |
 | 📵 Sin sugerencias móviles | `type="search"` evita que el teclado en mobile sugiera datos del portapapeles, tarjetas de crédito u otras entradas inapropiadas para un chat |
 | 🔒 Bloqueo del composer    | Input y botón deshabilitados mientras Gemini procesa — se reactivan en `finally`                                                              |
+| 🗑️ Limpiar conversación   | Botón discreto para borrar el historial del chat con confirmación previa — útil en mobile donde la sesión persiste                            |
 | ↗️ Ícono de envío          | Botón circular con SVG accesible via `aria-label`                                                                                             |
 | 🎨 CSS modular             | Estilos separados por responsabilidad (`variables.css`, `layout.css`, `chat.css`, etc.)                                                       |
 
