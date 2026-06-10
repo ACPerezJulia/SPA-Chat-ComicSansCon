@@ -7,6 +7,7 @@ const container = () => document.getElementById("view-container");
 function renderHome() {
   container().innerHTML = `
     <div class="view-content">
+      <img src="assets/luffy-avatar.png" alt="Monkey D. Luffy" class="home__avatar" />
       <p class="home__eyebrow">Monkey D. Luffy · One Piece</p>
       <h1 class="home__title">¡Yo seré el Rey de los Piratas!</h1>
       <p class="home__description">
