@@ -200,7 +200,13 @@ vercel --prod
 
 ## 🤖 Uso de IA en el desarrollo
 
-Este proyecto fue desarrollado con asistencia de **Claude Code (Anthropic)** como herramienta principal de desarrollo.
+Este proyecto fue desarrollado con asistencia de herramientas de **Claude (Anthropic)** en distintas etapas del proceso.
+
+| Herramienta | Cómo la usé | Para qué |
+| --- | --- | --- |
+| Claude (claude.ai) | Chat en el navegador | Planificación previa: análisis de documentos, construcción y validación del CLAUDE.md, cotejo contra el material del módulo |
+| Claude Code (bash/CLI) | Terminal integrado en el flujo de desarrollo | Implementación paso a paso: generación de código, corrección de bugs, guía del deploy |
+| Claude (VS Code extension) | Editor integrado | Ajustes de diseño CSS, refinamiento visual, mejoras de UX |
 
 ### Qué se generó con IA
 
