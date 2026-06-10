@@ -116,8 +116,8 @@ Su tripulación, la **Banda del Sombrero de Paja**, incluye a Zoro, Nami, Usopp,
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <url-del-repo>
-cd ProyectoIntegrador-M3-AnaliaPerezJulia
+git clone https://github.com/ACPerezJulia/SPA-Chat-ComicSansCon.git
+cd SPA-Chat-ComicSansCon
 ```
 
 ### 2. Instalar dependencias
